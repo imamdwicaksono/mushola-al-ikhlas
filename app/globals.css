@@ -1,26 +1,193 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+
+h1, h2 {
+  color: #1f7a4d;
+  gradient: linear-gradient(90deg, #0f5132, #0c0c0cff);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.running-text {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.running-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+  font-size: 26px;
+  padding: 12px 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.tv-bg {
+  background: radial-gradient(
+      circle at top,
+      rgba(0, 100, 70, 0.85),
+      rgba(0, 0, 0, 0.95)
+    ),
+    url('/islamic-pattern.png');
+  background-size: cover;
+  color: white;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+.prayer-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 22px 36px;
+  font-size: 38px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  transition: all .3s ease;
+}
+
+.prayer-row.active {
+  background: linear-gradient(90deg, #00c896, #00ffb3);
+  color: #003322;
+  font-weight: 700;
+}
+
+.countdown {
+  font-size: 140px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #ffd369;
+  text-shadow: 0 0 40px rgba(255, 211, 105, .6);
+}
+
+.running-text {
+  background: linear-gradient(90deg, #0f5132, #198754);
+}
+
+/* ===== ANIMATION ===== */
+
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
+
+.zoom-in {
+  animation: zoomIn 1.2s ease forwards;
+}
+
+.pulse {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(.85); opacity: 0 }
+  to { transform: scale(1); opacity: 1 }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(255,211,105,.7) }
+  50% { box-shadow: 0 0 40px rgba(255,211,105,.9) }
+  100% { box-shadow: 0 0 0 rgba(255,211,105,.7) }
+}
+
+.text-3d {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+
+  /* efek 3D */
+  text-shadow:
+    1px 1px 0 #0b3d2e,
+    2px 2px 0 #0b3d2e,
+    3px 3px 0 #0b3d2e,
+    4px 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.tv-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 32px;
+}
+
+.tv-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 32px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffd369;
 }
